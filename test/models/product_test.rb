@@ -45,4 +45,10 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     assert_equal ["has already been taken"], product.errors[:title]
   end
+
+  test 'title should have a minimal length' do
+    product = products(:one)
+    product.title = 'a'
+    assert product.invalid?
+  end
 end
