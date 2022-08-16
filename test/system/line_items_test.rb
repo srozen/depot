@@ -10,17 +10,17 @@ class LineItemsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Line items"
   end
 
-  test "should create line item" do
-    visit line_items_url
-    click_on "New line item"
-
-    fill_in "Cart", with: @line_item.cart_id
-    fill_in "Product", with: @line_item.product_id
-    click_on "Create Line item"
-
-    assert_text "Line item was successfully created"
-    click_on "Back"
-  end
+  # test "should create line item" do
+  #   visit line_items_url
+  #   click_on "New line item"
+  #
+  #   fill_in "Cart", with: @line_item.cart_id
+  #   fill_in "Product", with: @line_item.product_id
+  #   click_on "Create Line item"
+  #
+  #   assert_text "Line item was successfully created"
+  #   click_on "Back"
+  # end
 
   test "should update Line item" do
     visit line_item_url(@line_item)
