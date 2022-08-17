@@ -6,4 +6,5 @@ one:
 
 two:
   product: two
+  order: one
   cart: two
