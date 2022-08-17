@@ -63,6 +63,9 @@ group :development do
   # Manage Procfile based apps (used to launch app through RubyMine)
   gem 'foreman', '~> 0.87.2'
 
+  # Kill N+1 queries with a silver Bullet
+  gem 'bullet', '~> 7.0', '>= 7.0.3'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
