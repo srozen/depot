@@ -17,10 +17,10 @@ class OrdersTest < ApplicationSystemTestCase
     click_on "Edit this order", match: :first
 
     fill_in "Address", with: @order.address
-    fill_in "Email", with: @order.email
+    fill_in "E-mail", with: @order.email
     fill_in "Name", with: @order.name
-    page.select "Check", from: "Pay type"
-    click_on "Update Order"
+    page.select "Check", from: "Pay Type"
+    click_on "Place Order"
 
     assert_text "Order was successfully updated"
     click_on "Back"
@@ -39,35 +39,35 @@ class OrdersTest < ApplicationSystemTestCase
     click_on 'Add to Cart', match: :first
     click_on 'Checkout'
 
-    assert has_no_field? 'Routing number'
-    assert has_no_field? 'Account number'
-    assert has_no_field? 'Credit card number'
-    assert has_no_field? 'Expiration date'
-    assert has_no_field? 'Po number'
+    assert has_no_field? 'Routing #'
+    assert has_no_field? 'Account #'
+    assert has_no_field? 'Credit card #'
+    assert has_no_field? 'Expiry'
+    assert has_no_field? 'PO #'
 
-    page.select 'Check', from: 'Pay type'
+    page.select 'Check', from: 'Pay Type'
 
-    assert has_field? 'Routing number'
-    assert has_field? 'Account number'
-    assert has_no_field? 'Credit card number'
-    assert has_no_field? 'Expiration date'
-    assert has_no_field? 'Po number'
+    assert has_field? 'Routing #'
+    assert has_field? 'Account #'
+    assert has_no_field? 'CC #'
+    assert has_no_field? 'Expiry'
+    assert has_no_field? 'PO #'
 
-    page.select 'Credit card', from: 'Pay type'
+    page.select 'Credit Card', from: 'Pay Type'
 
-    assert has_no_field? 'Routing number'
-    assert has_no_field? 'Account number'
-    assert has_field? 'Credit card number'
-    assert has_field? 'Expiration date'
-    assert has_no_field? 'Po number'
+    assert has_no_field? 'Routing #'
+    assert has_no_field? 'Account #'
+    assert has_field? 'CC #'
+    assert has_field? 'Expiry'
+    assert has_no_field? 'PO #'
 
-    page.select 'Purchase order', from: 'Pay type'
+    page.select 'Purchase Order', from: 'Pay Type'
 
-    assert has_no_field? 'Routing number'
-    assert has_no_field? 'Account number'
-    assert has_no_field? 'Credit card number'
-    assert has_no_field? 'Expiration date'
-    assert has_field? 'Po number'
+    assert has_no_field? 'Routing #'
+    assert has_no_field? 'Account #'
+    assert has_no_field? 'CC #'
+    assert has_no_field? 'Expiry'
+    assert has_field? 'PO #'
   end
 
   test "check order and delivery" do
@@ -82,13 +82,13 @@ class OrdersTest < ApplicationSystemTestCase
 
     fill_in 'Name', with: 'Dave Thomas'
     fill_in 'Address', with: '123 Main Street'
-    fill_in 'Email', with: 'dave@example.com'
+    fill_in 'E-mail', with: 'dave@example.com'
 
-    page.select 'Check', from: 'Pay type'
-    fill_in 'Routing number', with: '123456'
-    fill_in 'Account number', with: '987654'
+    page.select 'Check', from: 'Pay Type'
+    fill_in 'Routing #', with: '123456'
+    fill_in 'Account #', with: '987654'
 
-    click_button 'Create Order'
+    click_button 'Place Order'
     assert_text "Thank you for your order."
 
     perform_enqueued_jobs
